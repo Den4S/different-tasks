@@ -52,9 +52,9 @@ def print_field(field, window, canvas, f_height, f_width):  # Вывод пол�
     for i in range(f_height):
         for j in range(f_width):
             if field[i][j] == 1:
-                canvas.create_rectangle(j * cell, i * cell, j * cell + cell, i * cell + cell, fill='black', width=0)
+                canvas.create_rectangle((j + 1) * cell, (i + 1) * cell, (j + 1) * cell + cell, (i + 1) * cell + cell, fill='black', width=1)
             else:
-                canvas.create_rectangle(j * cell, i * cell, j * cell + cell, i * cell + cell, fill='white', width=0)
+                canvas.create_rectangle((j + 1) * cell, (i + 1) * cell, (j + 1) * cell + cell, (i + 1) * cell + cell, fill='white', width=1)
     window.update()
     time.sleep(0.1)
 
@@ -66,7 +66,7 @@ def life():  # Всё вместе
     for i in range(f_height):
         neighbors.append([0] * f_width)
     window = Tk()
-    canvas = Canvas(window, width=cell*f_width, height=cell*f_height)
+    canvas = Canvas(window, width=cell * (f_width + 2), height=cell * (f_height + 2))
     canvas.pack()
     print_field(field, window, canvas, f_height, f_width)
     flag_end = False
