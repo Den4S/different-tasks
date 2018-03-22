@@ -1,6 +1,6 @@
 import math
 # Константы из условия
-r_mass = 2000  # кг
+r_mass = 2150  # кг
 f_mass = 1000  # кг
 g = 9.81  # м/с^2
 lim_ovrld = 2.943
@@ -77,7 +77,8 @@ def fall():  # Падение.
 def flight(maneuvers):  # Пробегаем по maneuvers[][] и последовательно выполняем все маневры.
     global v_x, v_y, r_x, r_y, dt, answer
     for i in range(len(maneuvers)):  # Выполняем все маневры.
-        make_step(maneuvers[i][0], maneuvers[i][1], maneuvers[i][2])
+        f_dm = maneuvers[i][1] / maneuvers[i][2]
+        make_step(maneuvers[i][0], f_dm, maneuvers[i][2])
         answer.write(str(round(v_x)) + '\t\t' + str(round(v_y)) + '\t\t' + str(round(r_x)) + '\t\t'
                      + str(round(r_y)) + '\n')
     fall()
