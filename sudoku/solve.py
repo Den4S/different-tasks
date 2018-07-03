@@ -67,10 +67,13 @@ def check(answer):  # Проверка корректности ответа п�
                     return False
                 else:
                     nine.append(num)
-    for cell0 in range(0, 3, 81):
+    cell0 = 0
+    while cell0 < 61:
         nine = []
-        if cell0 > 80:
-            break
+        if cell0 == 9:
+            cell0 = 27
+        if cell0 == 36:
+            cell0 = 54;
         for i in range(3):
             for j in range(3):
                 num = answer[cell0 + j + 9 * i]
@@ -79,6 +82,7 @@ def check(answer):  # Проверка корректности ответа п�
                         return False
                     else:
                         nine.append(num)
+        cell0 = cell0 + 3
     return True
 
 
